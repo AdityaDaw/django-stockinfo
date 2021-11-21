@@ -1,0 +1,71 @@
+{% extends "stockprice/base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <h1>{{LongName}}</h1>
+    <div class="row">
+        <div class="col-sm-5 shadow p-3 mb-5 bg-body rounded p-2 m-2">
+            <h4>About</h4>
+            <p>
+                {{Summary}}
+            </p>
+        </div>
+        <div class="col-sm-5 shadow p-3 mb-5 bg-body rounded p-2 m-2">
+            <table class="table table-hover">
+                <thead class="table-info">
+                    <th>Date</th>
+                    <th>Dividend Payout (Local Currency)</th>
+                </thead>
+                {% for date,price in Devd %}
+                <tr>
+                    <td>{{ date }}</td>
+                    <td>{{ price }}</td>
+                </tr>
+                {% empty %}
+                <h5>Sorry, We currenly not have any Devidend for this Stock</h5>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-sm-5 shadow p-3 mb-5 bg-body rounded p-2 m-2">
+            <h4>Yearly Revenue</h4>
+            <table class="table table-hover">
+                <thead class="table-info">
+                    <th>Year</th>
+                    <th>Revenue</th>
+                    <th>Earnings</th>
+                </thead>
+                {% for yaer,Revenue,Profit in Earnings %}
+                <tr>
+                    <td>{{ yaer }}</td>
+                    <td>{{ Revenue }}</td>
+                    <td>{{ Profit }}</td>
+                </tr>
+                {% empty %}
+                <h5>Sorry, We currenly not have any Revenue for this Stock</h5>
+                {% endfor %}
+            </table>
+            
+        </div>
+        <div class="col-sm-5 col-xl-6 col-md-10 shadow p-3 mb-5 bg-body rounded p-2 m-2">
+
+            <h4>Recomendation</h4>
+            <table class="table table-hover">
+                <thead class="table-info">
+                    <th>Date</th>
+                    <th>Firm</th>
+                    <th>To Grade</th>
+                </thead>
+                {% for Date, Firm, ToGrade in Recc %}
+                <tr>
+                    <td>{{ Date }}</td>
+                    <td>{{ Firm }}</td>
+                    <td>{{ ToGrade }}</td>
+                </tr>
+                {% empty %}
+                <h5>Sorry, We currenly not have any recommendation for this Stock</h5>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
