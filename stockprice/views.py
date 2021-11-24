@@ -48,7 +48,7 @@ def getquote(request):
         'MarketCap':marketCap,
         'TrailingAnnualDividendYield':trailingAnnualDividendYield,
     }
-    return render(request, 'stockprice/price_show.html',data)
+    return render(request, os.path.join('stockprice','price_show.html'),data)
 
 def home(request):
     file_path = os.path.join(settings.STATIC_ROOT, 'stockprice','st.csv')
@@ -56,4 +56,4 @@ def home(request):
     content = list(ticker['SYMBOL'].to_list())
     quotes=json.dumps(content)
     
-    return render(request, 'stockprice\home.html',{'quotes':quotes})
+    return render(request,os.path.join('stockprice','home.html'),{'quotes':quotes})
