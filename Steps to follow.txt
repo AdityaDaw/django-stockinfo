@@ -1,0 +1,9 @@
+heroku create stkprice
+heroku git:remote -a stkprice
+pip install waitress
+waitress-serve --port=8000 price.wsgi:application
+Procfile web: waitress-serve --port=8000 price.wsgi:application
+white noise middle wire
+static root
+'whitenoise.middleware.WhiteNoiseMiddleware'
+git push heroku master
